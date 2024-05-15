@@ -1,0 +1,103 @@
+.booking {
+  display: flex;
+  padding: 74px 89px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 42px;
+  width: 100vw;
+}
+
+.booking-fields {
+  display: flex;
+  flex-direction: column;
+  background-color: #2C2C2C;
+  padding: 30px 33px;
+  border-radius: 4px;
+}
+
+.booking p {
+  font-size: 26px;
+}
+
+.booking h1 {
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.booking h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.booking span {
+  color: #FBA403;
+}
+
+.booking .my-span {
+  font-weight: regular;
+  font-style: italic;
+}
+
+.booking button {
+  background-color: #FBA403;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 16px;
+  padding: 14.5px 47px;
+}
+
+.booking input {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  border-radius: 4px;
+  height: 60px;
+  width: 100%;
+  padding: 17px 12px;
+  color: white;
+  font-size: 16px;
+}
+input:focus {
+  border-color: blue;
+}
+
+.booking-form-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.booking label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  background-color: #2C2C2C;
+  padding: 0px 3px;
+  z-index: 2;
+}
+
+.single-input {
+  position: relative;
+}
+
+.input-container {
+  position: relative;
+  max-height: 60px;
+}
+
+.clear-icon {
+  position: absolute;
+  right: 5px;
+  top: 25%;
+  cursor: pointer;
+}
+
