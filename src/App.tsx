@@ -1,5 +1,6 @@
 import Header from './components/Header.tsx';
 import Booking from './components/Booking.tsx';
+import RideOptions from './components/RideOptions.tsx';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <div>
         <Header />
         <Booking />
+        <RideOptions />
       </div>
     </>
   )

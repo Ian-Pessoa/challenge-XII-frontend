@@ -101,3 +101,7 @@ input:focus {
   cursor: pointer;
 }
 
+.clear-icon svg {
+  fill: #FBA403;
+}
+

@@ -73,7 +73,9 @@ export default function Booking() {
                   />
                   {destination && (
                     <span className="clear-icon" onClick={() => handleClear('destination')}>
-                      <img src="https://imageschallenge.s3.amazonaws.com/Icon+Button.svg" alt="" className='clear-icon' />
+                      <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19.8334 9.70874L18.6584 8.53374L14.0001 13.1921L9.34175 8.53374L8.16675 9.70874L12.8251 14.3671L8.16675 19.0254L9.34175 20.2004L14.0001 15.5421L18.6584 20.2004L19.8334 19.0254L15.1751 14.3671L19.8334 9.70874Z" fill="white" fill-opacity="0.56"/>
+                      </svg>
                     </span>
                   )}
                 </div>
