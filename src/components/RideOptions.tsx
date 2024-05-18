@@ -15,7 +15,7 @@ export default function RideOptions() {
 
   const fetchData = async () => {
     try {
-      const response = await Axios.get<RideOption[]>('http://localhost:3000/ride-options'); // Especificando o tipo de dados esperado na resposta
+      const response = await Axios.get<RideOption[]>('http://localhost:3000/ride-options');
       setData(response.data);
     } catch (error) {
       console.error('Erro na requisição:', error);
