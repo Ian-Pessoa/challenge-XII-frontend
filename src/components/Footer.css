@@ -42,3 +42,44 @@ footer {
 .footer-menu a {
   margin-bottom: 12px;
 }
+
+@media only screen and (max-width: 414px) {
+  footer {
+    padding: 0px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links {
+    margin: 0px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+  }
+
+  .footer-links a {
+    margin: 0px;
+  }
+
+  .footer-links div {
+    display: flex;
+    gap: 25px;
+  }
+
+  .footer-menu {
+    width: 100vw;
+    justify-content: center;
+  }
+
+  .footer-menu div {
+    width: 120px;
+    align-items: center;
+    margin: 0px;
+  }
+
+  .footer-menu a {
+    font-size: 14px;
+  }
+}

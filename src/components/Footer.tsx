@@ -6,9 +6,11 @@ export default function Footer() {
       <div className="footer-links">
         <img className='icon' src="https://imageschallenge.s3.amazonaws.com/Logo+(1).svg" alt="" />
         <p>MyRide Inc., 2nd Floor, New York, NY 10016</p>
-        <a href="https://www.facebook.com/compass.uol/?locale=pt_BR"><img src="https://imageschallenge.s3.amazonaws.com/Facebook.svg" alt="" /></a>
-        <a href="https://www.instagram.com/compass.uol/"><img src="https://imageschallenge.s3.amazonaws.com/Instagram.svg" alt="" /></a>
-        <a href="https://x.com/compassuol"><img src="https://imageschallenge.s3.amazonaws.com/Twitter.svg" alt="" /></a>
+        <div>
+          <a href="https://www.facebook.com/compass.uol/?locale=pt_BR"><img src="https://imageschallenge.s3.amazonaws.com/Facebook.svg" alt="" /></a>
+          <a href="https://www.instagram.com/compass.uol/"><img src="https://imageschallenge.s3.amazonaws.com/Instagram.svg" alt="" /></a>
+          <a href="https://x.com/compassuol"><img src="https://imageschallenge.s3.amazonaws.com/Twitter.svg" alt="" /></a>
+        </div>
       </div>
       <div className='footer-menu'>
         <div className='company-section'>

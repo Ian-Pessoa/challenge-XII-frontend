@@ -60,3 +60,44 @@
   color: #FBA403;
   padding: 9px;
 }
+
+@media only screen and (max-width: 414px) {
+  .ride-options-container {
+    padding: 30px 0px 20px
+  }
+
+  .ride-options-header-container {
+    padding: 0px 30px;
+  }
+
+  .ride-options-header-container p {
+    font-size: 23px;
+  }
+
+  .ride-options-header-container h2 {
+    font-size: 40px;
+  }
+
+  .ride-cards-container {
+    display: block;
+  }
+
+  .ride-card img {
+    width: 100vw;
+  }
+
+  .card-text {
+    width: 100vw;
+    padding-top: 30px;
+  }
+
+  li {
+    background-color: #383838;
+  }
+
+  .card-link {
+    width: 100vw;
+    padding-bottom: 25px;
+    margin-bottom: 60px;
+  }
+}

@@ -105,3 +105,59 @@ input:focus {
   fill: #FBA403;
 }
 
+@media only screen and (max-width: 414px) {
+  .booking {
+    padding: 0px;
+    display: block;
+  }
+
+  .booking .image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .hero-image {
+    width: 105vw;
+  }
+
+  .booking p {
+    font-size: 20px;
+    margin-left: 49px;
+  }
+
+  .booking h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .booking-form {
+    margin: 0px;
+  }
+
+  .booking-fields {
+    padding: 40px 25px;
+    border-radius: 0px;
+  }
+
+  .booking-fields h2 {
+    margin-bottom: 30px;
+  }
+
+  .booking-fields form {
+    padding: 0px;
+  }
+
+  .booking-fields button {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .options-row {
+    display: flex;
+    gap: 10px;
+  }
+}

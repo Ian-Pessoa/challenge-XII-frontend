@@ -35,8 +35,8 @@ export default function Booking() {
 
   return (
     <section className='booking'>
-      <div>
-        <img src="https://imageschallenge.s3.amazonaws.com/Hero+image.png" alt="" />
+      <div className='image-container'>
+        <img className='hero-image' src="https://imageschallenge.s3.amazonaws.com/Hero+image.png" alt="" />
       </div>
       <div className='booking-form'>
         <p>NEED A RIDE?</p>

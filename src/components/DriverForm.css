@@ -206,3 +206,42 @@ small {
 .error-container img {
   margin-right: 6px;
 }
+
+@media only screen and (max-width: 414px) {
+  .driver-form {
+    padding: 0px;
+  }
+
+  .driver-form-header {
+    border-radius: 0px
+  }
+
+  .driver-form-header img {
+    width: 50%;
+  }
+
+  .driver-form-header h3 {
+    font-size: 25px;
+  }
+
+  .driver-form-header p {
+    font-size: 14px;
+  }
+
+  .inputs-row {
+    display: block;
+  }
+
+  .inputs-row div {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .submit-driver-form-button {
+    width: 100%;
+  }
+
+  .input-div {
+    margin-right: 0px;
+  }
+}
