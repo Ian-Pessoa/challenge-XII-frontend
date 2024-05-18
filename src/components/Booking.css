@@ -105,6 +105,19 @@ input:focus {
   fill: #FBA403;
 }
 
+.input-error-booking {
+  border-color: #FBA403 !important;
+}
+
+.label-error-booking {
+  color: #FBA403 !important;
+}
+
+.svg-path-error {
+  fill: #FBA403;
+  opacity: 1;
+}
+
 @media only screen and (max-width: 414px) {
   .booking {
     padding: 0px;
