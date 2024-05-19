@@ -6,19 +6,22 @@ import axios, { AxiosResponse } from 'axios';
 
 interface Country {
   alpha3Code: string;
-  name: {
-    common: string;
-  };
+  name: string;
+}
+
+interface City {
+  name: string;
 }
 
 export default function DriverForm() {
   const { register, handleSubmit, errors } = useForms();
   const [countries, setCountries] = useState<Country[]>([]);
+  const [cities, setCities] = useState<City[]>([]);
   const [isCityDisabled, setIsCityDisabled] = useState(true);
   const [selectedCarType, setSelectedCarType] = useState<string | null>(null);
 
   const onSubmit = (data: FormSchema) => {
-    console.log(data); 
+    console.log(data);
   };
 
   const handleCarTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,24 +29,39 @@ export default function DriverForm() {
   };
 
   useEffect(() => {
-    setIsCityDisabled(true);
     fetchCountries();
   }, []);
 
   const fetchCountries = async () => {
     try {
-      const response: AxiosResponse<Country[]> = await axios.get('https://restcountries.com/v3.1/all');
-      setCountries(response.data);
+      const response: AxiosResponse<string[]> = await axios.get('http://localhost:3000/countries');
+      const countriesData = response.data.map(country => ({
+        alpha3Code: country,
+        name: country
+      }));
+      setCountries(countriesData);
     } catch (error) {
       console.error('Error fetching countries:', error);
+    }
+  };
+
+  const fetchCities = async (country: string) => {
+    try {
+      const response: AxiosResponse<string[]> = await axios.get(`http://localhost:3000/countries/${country}/cities`);
+      const citiesData = response.data.map(city => ({ name: city }));
+      setCities(citiesData);
+    } catch (error) {
+      console.error('Error fetching cities:', error);
     }
   };
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountry = e.target.value;
     setIsCityDisabled(selectedCountry === 'select');
-    if (selectedCountry === 'select') {
-      document.getElementById('city')?.setAttribute('value', 'select');
+    if (selectedCountry !== 'select') {
+      fetchCities(selectedCountry);
+    } else {
+      setCities([]);
     }
   };
 
@@ -89,9 +107,9 @@ export default function DriverForm() {
         <div>
           <select id="country" {...register('country')} onChange={handleCountryChange}>
             <option value="select">Country</option>
-            {countries.map((country) => ( 
-              <option key={country.alpha3Code} value={country.alpha3Code}>
-                {country.name.common}
+            {countries.map((country) => (
+              <option key={country.alpha3Code} value={country.name}>
+                {country.name}
               </option>
             ))}
           </select>
@@ -100,8 +118,11 @@ export default function DriverForm() {
         <div>
           <select id="city" {...register('city')} disabled={isCityDisabled}>
             <option value="select">City</option>
-            <option value="gara">Garanhuns</option>
-            <option value="rec">Recife</option>
+            {cities.map((city, index) => (
+              <option key={index} value={city.name}>
+                {city.name}
+              </option>
+            ))}
           </select>
           {errors.city && <div className='error-container'><img src="https://imageschallenge.s3.amazonaws.com/image+27.svg" alt="" /><small>{errors.city.message}</small></div>}
         </div>
@@ -127,73 +148,73 @@ export default function DriverForm() {
           {errors.ownCar && <div className='error-container'><img src="https://imageschallenge.s3.amazonaws.com/image+27.svg" alt="" /><small>{errors.ownCar.message}</small></div>}
         </div>
         <div>
-        <h3 className='car-type-title'>Select your car type</h3>
-        <div className='options-row'>
-          <div className={`input-div ${selectedCarType === 'Sedan' ? 'active-car-type' : ''}`}>
-            <input 
-              type="radio" 
-              id='sedan' 
-              value='Sedan'
-              {...register("carType")} 
-              onChange={handleCarTypeChange}
-            />
-            <div className='car-type'>
-              <div>
-                <img src="https://imageschallenge.s3.amazonaws.com/Card+Image.svg" alt="" />
+          <h3 className='car-type-title'>Select your car type</h3>
+          <div className='options-row'>
+            <div className={`input-div ${selectedCarType === 'Sedan' ? 'active-car-type' : ''}`}>
+              <input 
+                type="radio" 
+                id='sedan' 
+                value='Sedan'
+                {...register("carType")} 
+                onChange={handleCarTypeChange}
+              />
+              <div className='car-type'>
+                <div>
+                  <img src="https://imageschallenge.s3.amazonaws.com/Card+Image.svg" alt="" />
+                </div>
+                <label htmlFor="sedan">Sedan</label>
               </div>
-              <label htmlFor="sedan">Sedan</label>
+            </div>
+            <div className={`input-div ${selectedCarType === 'SUV/Van' ? 'active-car-type' : ''}`}>
+              <input 
+                type="radio" 
+                id='suv' 
+                value='SUV/Van'
+                {...register("carType")} 
+                onChange={handleCarTypeChange}
+              />
+              <div className='car-type'>
+                <div>
+                  <img src="https://imageschallenge.s3.amazonaws.com/Card+Image+(1).svg" alt="" />
+                </div>
+                <label htmlFor="suv">SUV/Van</label>
+              </div>
+            </div>
+            <div className={`input-div ${selectedCarType === 'Semi Luxury' ? 'active-car-type' : ''}`}>
+              <input 
+                type="radio" 
+                id='semiLuxury' 
+                value='Semi Luxury'
+                {...register("carType")} 
+                onChange={handleCarTypeChange}
+              />
+              <div className='car-type'>
+                <div>
+                  <img src="https://imageschallenge.s3.amazonaws.com/Card+Image+(2).svg" alt="" />
+                </div>
+                <label htmlFor="semiLuxury">Semi Luxury</label>
+              </div>
+            </div>
+            <div className={`input-div ${selectedCarType === 'Luxury Car' ? 'active-car-type' : ''}`}>
+              <input 
+                type="radio" 
+                id='luxury' 
+                value='Luxury Car'
+                {...register("carType")} 
+                onChange={handleCarTypeChange}
+              />
+              <div className='car-type'>
+                <div>
+                  <img src="https://imageschallenge.s3.amazonaws.com/Card+Image+(3).svg" alt="" />
+                </div>
+                <label htmlFor="luxury">Luxury Car</label>
+              </div>
             </div>
           </div>
-          <div className={`input-div ${selectedCarType === 'SUV/Van' ? 'active-car-type' : ''}`}>
-            <input 
-              type="radio" 
-              id='suv' 
-              value='SUV/Van'
-              {...register("carType")} 
-              onChange={handleCarTypeChange}
-            />
-            <div className='car-type'>
-              <div>
-                <img src="https://imageschallenge.s3.amazonaws.com/Card+Image+(1).svg" alt="" />
-              </div>
-              <label htmlFor="suv">SUV/Van</label>
-            </div>
-          </div>
-          <div className={`input-div ${selectedCarType === 'Semi Luxury' ? 'active-car-type' : ''}`}>
-            <input 
-              type="radio" 
-              id='semiLuxury' 
-              value='Semi Luxury'
-              {...register("carType")} 
-              onChange={handleCarTypeChange}
-            />
-            <div className='car-type'>
-              <div>
-                <img src="https://imageschallenge.s3.amazonaws.com/Card+Image+(2).svg" alt="" />
-              </div>
-              <label htmlFor="semiLuxury">Semi Luxury</label>
-            </div>
-          </div>
-          <div className={`input-div ${selectedCarType === 'Luxury Car' ? 'active-car-type' : ''}`}>
-            <input 
-              type="radio" 
-              id='luxury' 
-              value='Luxury Car'
-              {...register("carType")} 
-              onChange={handleCarTypeChange}
-            />
-            <div className='car-type'>
-              <div>
-                <img src="https://imageschallenge.s3.amazonaws.com/Card+Image+(3).svg" alt="" />
-              </div>
-              <label htmlFor="luxury">Luxury Car</label>
-            </div>
-          </div>
+          {errors.carType && <div className='error-container'><img src="https://imageschallenge.s3.amazonaws.com/image+27.svg" alt="" /><small>{errors.carType.message}</small></div>}
         </div>
-        {errors.carType && <div className='error-container'><img src="https://imageschallenge.s3.amazonaws.com/image+27.svg" alt="" /><small>{errors.carType.message}</small></div>}
-      </div>
-      <button className='submit-driver-form-button' type='submit'>SUBMIT</button>
+        <button className='submit-driver-form-button' type='submit'>SUBMIT</button>
       </form>
     </div>
-  )
+  );
 }
