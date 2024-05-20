@@ -4,6 +4,7 @@ import { FormSchema } from '../schemas/formSchema';
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import Spinner from './Spinner';
+import Success from './Success'; 
 
 interface Country {
   alpha3Code: string;
@@ -21,9 +22,14 @@ export default function DriverForm() {
   const [isCityDisabled, setIsCityDisabled] = useState(true);
   const [selectedCarType, setSelectedCarType] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const onSubmit = (data: FormSchema) => {
     console.log(data);
+
+    setTimeout(() => {
+      setIsSubmitted(true);
+    }, 1000);
   };
 
   const handleCarTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,6 +75,10 @@ export default function DriverForm() {
       setCities([]);
     }
   };
+
+  if (isSubmitted) {
+    return <Success />;
+  }
 
   return (
     <div className='driver-form'>
