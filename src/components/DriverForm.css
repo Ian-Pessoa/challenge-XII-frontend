@@ -66,6 +66,21 @@ form {
   color: white;
 }
 
+.driver-form select {
+  appearance: none;
+}
+
+.select-container {
+  position: relative;
+}
+
+.select-container img {
+  position: absolute;
+  top: 36px;
+  right: 11px;
+  pointer-events: none;
+}
+
 select option {
   background-color: #2C2C2C;
   color: #fff; 

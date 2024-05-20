@@ -3,7 +3,7 @@ import { useForms } from '../hooks/useForms';
 import { FormSchema } from '../schemas/formSchema';
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
-import Spinner from './Spinner'; // Import the Spinner component
+import Spinner from './Spinner';
 
 interface Country {
   alpha3Code: string;
@@ -72,7 +72,7 @@ export default function DriverForm() {
 
   return (
     <div className='driver-form'>
-      {loading && <div className='loading-overlay'><Spinner /></div>} {/* Show spinner in an overlay */}
+      {loading && <div className='loading-overlay'><Spinner /></div>}
       <div className='driver-form-header'>
         <img src="https://imageschallenge.s3.amazonaws.com/Popup+image.png" alt="" />
         <div className='form-titles'>
@@ -110,7 +110,7 @@ export default function DriverForm() {
           />
           {errors.email && <div className='error-container'><img src="https://imageschallenge.s3.amazonaws.com/image+27.svg" alt="" /><small>{errors.email.message}</small></div>}
         </div>
-        <div>
+        <div className='select-container'>
           <select id="country" {...register('country')} onChange={handleCountryChange}>
             <option value="select">Country</option>
             {countries.map((country) => (
@@ -119,9 +119,10 @@ export default function DriverForm() {
               </option>
             ))}
           </select>
-          {errors.country && <div className='error-container'><img src="https://imageschallenge.s3.amazonaws.com/image+27.svg" alt="" /><small>{errors.country.message}</small></div>}
+          <img src="https://imageschallenge.s3.amazonaws.com/Arrow.svg" alt="" />
         </div>
-        <div>
+        {errors.country && <div className='error-container'><img src="https://imageschallenge.s3.amazonaws.com/image+27.svg" alt="" /><small>{errors.country.message}</small></div>}
+        <div className='select-container'>
           <select id="city" {...register('city')} disabled={isCityDisabled}>
             <option value="select">City</option>
             {cities.map((city, index) => (
@@ -130,8 +131,9 @@ export default function DriverForm() {
               </option>
             ))}
           </select>
-          {errors.city && <div className='error-container'><img src="https://imageschallenge.s3.amazonaws.com/image+27.svg" alt="" /><small>{errors.city.message}</small></div>}
+          <img src="https://imageschallenge.s3.amazonaws.com/Arrow.svg" alt="" />
         </div>
+        {errors.city && <div className='error-container'><img src="https://imageschallenge.s3.amazonaws.com/image+27.svg" alt="" /><small>{errors.city.message}</small></div>}
         <div>
           <input 
             type="text" 
