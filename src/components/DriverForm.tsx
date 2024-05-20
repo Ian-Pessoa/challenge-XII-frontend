@@ -3,6 +3,7 @@ import { useForms } from '../hooks/useForms';
 import { FormSchema } from '../schemas/formSchema';
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
+import Spinner from './Spinner'; // Import the Spinner component
 
 interface Country {
   alpha3Code: string;
@@ -19,6 +20,7 @@ export default function DriverForm() {
   const [cities, setCities] = useState<City[]>([]);
   const [isCityDisabled, setIsCityDisabled] = useState(true);
   const [selectedCarType, setSelectedCarType] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const onSubmit = (data: FormSchema) => {
     console.log(data);
@@ -47,11 +49,14 @@ export default function DriverForm() {
 
   const fetchCities = async (country: string) => {
     try {
+      setLoading(true);
       const response: AxiosResponse<string[]> = await axios.get(`http://localhost:3000/countries/${country}/cities`);
       const citiesData = response.data.map(city => ({ name: city }));
       setCities(citiesData);
     } catch (error) {
       console.error('Error fetching cities:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,6 +72,7 @@ export default function DriverForm() {
 
   return (
     <div className='driver-form'>
+      {loading && <div className='loading-overlay'><Spinner /></div>} {/* Show spinner in an overlay */}
       <div className='driver-form-header'>
         <img src="https://imageschallenge.s3.amazonaws.com/Popup+image.png" alt="" />
         <div className='form-titles'>

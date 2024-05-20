@@ -207,6 +207,23 @@ small {
   margin-right: 6px;
 }
 
+.driver-form {
+  position: relative;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(40, 40, 40, 0.7);
+  z-index: 999;
+}
+
 @media only screen and (max-width: 414px) {
   .driver-form {
     padding: 0px;
