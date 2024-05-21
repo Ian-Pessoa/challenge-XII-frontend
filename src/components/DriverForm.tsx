@@ -4,7 +4,7 @@ import { FormSchema } from '../schemas/formSchema';
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import Spinner from './Spinner';
-import Success from './Success'; 
+import Success from './Success';
 
 interface Country {
   alpha3Code: string;
@@ -24,12 +24,16 @@ export default function DriverForm() {
   const [loading, setLoading] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const onSubmit = (data: FormSchema) => {
-    console.log(data);
-
-    setTimeout(() => {
+  const onSubmit = async (data: FormSchema) => {
+    try {
+      setLoading(true);
+      await axios.post('http://localhost:3000/drivers', data);
       setIsSubmitted(true);
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleCarTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
