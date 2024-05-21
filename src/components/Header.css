@@ -1,0 +1,61 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+header nav {
+  display: flex;
+  gap: 30px;
+}
+
+header .right-section {
+  display: flex;
+  align-items: center;
+}
+
+header .bell-icon {
+  box-sizing: content-box;
+  padding-right: 20px;
+  border-right: 1px solid #333333;
+}
+
+header img {
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 414px) {
+  header {
+    padding: 5px;
+  }
+
+  header .logo {
+    height: 32px;
+  }
+
+  a {
+    font-size: 12px;
+  }
+
+  header nav {
+    display: flex;
+    gap: 10px;
+  }
+
+  header .bell-icon {
+    padding-right: 5px;
+    border-right: 1px solid #333333;
+    height: 20px;
+  }
+  
+  header img {
+    margin-left: 5px;
+    height: 25px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+## Descrição
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o código fonte de um projeto desenvolvido durante o programa de bolsas da compass uol utilizando React.ts.
 
-Currently, two official plugins are available:
+Possui responsividade 1440px e 414px.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Header
 
-## Expanding the ESLint configuration
+- O header não faz interação
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Seção 1
 
-- Configure the top-level `parserOptions` property like this:
+- Input Current location é pré-preenchido com endereço do usuário baseado em IP.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Validação dos campos:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Ambos os campos aceitam qualquer coisa, mas não podem estar vazios.
+- Se algum campo estiver vazio é dado foco nele.
+- O botão find a driver valida os campos e em caso de sucesso direciona para a página 404.
+
+## Seção 2
+
+- Os veículos, textos e links sào obtidos através do backend
+- Os links redirecionam para a página da wikipédia correspondente a cada tipo de carro
+
+## Seção 3
+
+- Campos contém validação utilizando zod e react hook form.
+- Dados são enviados para o backend.
+- Obtem países e cidades a partir de API vinda do backend.
+- Exite um loading após selecionar o país.
+- Não é possível selecionar cidade antes de do país.
+- O botão submit valida os campos e envia os dados para o backend.
+- A seção de formulário é modificada para seção de sucesso ao enviar os dados.
+
+## Footer
+
+- Links do footer redirecionam para a página 404.
+- Links das redes socias levam para as redes sociais da Compass.
+
+## Página 404
+
+- fundo preto do layout com um ícone de atenção redondo na cor amarela.
